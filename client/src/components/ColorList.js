@@ -17,6 +17,7 @@ const ColorList = ({ colors, updateColors }) => {
   const editColor = color => {
     setEditing(true);
     setColorToEdit(color);
+    console.log("colorToEdit", colorToEdit)
   };
 
   const saveEdit = e => {
@@ -27,7 +28,9 @@ const ColorList = ({ colors, updateColors }) => {
     axiosWithAuth()
       .put(`colors/${id}`, colorToEdit)
       .then(res => {
-        console.log("Colorlist .put", res)
+        console.log("Colorlist .put", res.data)
+        //? res.data setState
+        setColorToEdit(res.data);
       })
       .catch(err => {
         console.log(".put fail", err)
@@ -40,17 +43,13 @@ const ColorList = ({ colors, updateColors }) => {
       .delete(`colors/${color.id}`)
       .then(res => {
         console.log("Colorlist .delete", res)
-        //todo: some kind of setState with res.data
-        updateColors(res.data)
+        //? res.data setState
+        setColorToEdit(res.data)
       })
       .catch(err => {
         console.log(".delete fail", err)
       })
   };
-
-  // setState({
-  // 
-  // })
 
   return (
     <div className="colors-wrap">
