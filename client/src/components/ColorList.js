@@ -26,11 +26,13 @@ const ColorList = ({ colors, updateColors }) => {
     // think about where will you get the id from...
     // where is is saved right now?
     axiosWithAuth()
-      .put(`colors/${id}`, colorToEdit)
+      .put(`colors/${colorToEdit.id}`, colorToEdit)
       .then(res => {
         console.log("Colorlist .put", res.data)
         //? res.data setState
         setColorToEdit(res.data);
+        setEditing(false)
+        window.location.reload();
       })
       .catch(err => {
         console.log(".put fail", err)
@@ -43,8 +45,8 @@ const ColorList = ({ colors, updateColors }) => {
       .delete(`colors/${color.id}`)
       .then(res => {
         console.log("Colorlist .delete", res)
-        //? res.data setState
         setColorToEdit(res.data)
+        window.location.reload();
       })
       .catch(err => {
         console.log(".delete fail", err)
