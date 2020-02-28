@@ -53,6 +53,25 @@ const ColorList = ({ colors, updateColors }) => {
       })
   };
 
+  // const addColor = e => {
+  //   e.preventDefault();
+  //   const newColor = {
+  //     color: "",
+  //     code: {
+  //       hex: ""
+  //     },
+  //     id: ""
+  //   }
+  //   axiosWithAuth()
+  //     .post(`colors`)
+  //     .then(res => {
+  //       console.log("ColorList .post", res)
+  //     })
+  //     .catch(err => {
+  //       console.log(".post fail", err)
+  //     })
+  // }
+
   return (
     <div className="colors-wrap">
       <p>colors</p>
@@ -108,6 +127,21 @@ const ColorList = ({ colors, updateColors }) => {
       )}
       <div className="spacer" />
       {/* stretch - build another form here to add a color */}
+      {/* <form onSubmit={addColor}>
+        <lable>
+          Color Name:
+          <input />
+        </lable>
+        <lable>
+          Color Hex Code:
+          <input
+          type="text"
+          name="hex"
+          value={color.code.hex}
+          onChange={e => }
+          />
+        </lable>
+      </form> */}
     </div>
   );
 };
