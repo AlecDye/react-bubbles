@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import axiosWithAuth from "../utils/axiosWithAuth"
 
-const Login = () => {
+const Login = props => {
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
   const [state, setState] = useState({
@@ -28,7 +28,7 @@ const Login = () => {
       .post("Login", state.credentials)
       .then(res => {
         window.localStorage.setItem("token", res.data.payload)
-        PaymentResponse.history.push("/protected");
+        props.history.push("/protected");
       })
       .catch(err => {
         console.log("Post failed", err)
@@ -37,7 +37,7 @@ const Login = () => {
   return (
     <div className="form-container">
       <h2>Have an account? Log in here!</h2>
-      {/* <p> user: Lambda School pw: i<3Lambd4</p> */}
+      <p> (user: "Lambda School" pw: "i&lt;3Lambd4")</p>
       <form >
         <label>
           Username:
