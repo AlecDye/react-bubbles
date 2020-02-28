@@ -38,7 +38,7 @@ const Login = props => {
     <div className="form-container">
       <h2>Have an account? Log in here!</h2>
       <p> (user: "Lambda School" pw: "i&lt;3Lambd4")</p>
-      <form >
+      <form onSubmit={handleSubmit}>
         <label>
           Username:
         <input
